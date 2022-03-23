@@ -6,7 +6,7 @@ public class ColaDiscapacitados {
     public Nodo cabeza;
     public Nodo fincola;
 
-    public void encolarNodo(Cliente i) { // esta funcion es para poner un cliente delante de una cola
+    public void encolarNodo_dis(Cliente i) { // esta funcion es para poner un cliente delante de una cola
 
         /* lo inicio localmente y verfico si esta vacio */
         Nodo nuevoNodo = new Nodo(i);
@@ -21,7 +21,7 @@ public class ColaDiscapacitados {
 
 
 
-    public void eliminarNodo() {
+    public void eliminarNodo_dis() {
         if (cabeza != null) {
             Nodo eliminarNodo = cabeza; 
             cabeza = cabeza.seguirNodo; 
@@ -35,7 +35,7 @@ public class ColaDiscapacitados {
 
 
 
-    public Cliente obtenerNodo() {
+    public Cliente obtenerNodo_dis() {
         if (cabeza == null) {
             return null; 
             

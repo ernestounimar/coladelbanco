@@ -4,7 +4,7 @@ public class ColaGeneral {
     public Nodo cabeza;
     public Nodo fincola;
 
-    public void encolarNodo(Cliente i) { // esta funcion es para poner un cliente delante de una cola
+    public void encolarNodo_ge(Cliente i) { // esta funcion es para poner un cliente delante de una cola
 
         /* lo inicio localmente y verfico si esta vacio */
         Nodo nuevoNodo = new Nodo(i);
@@ -19,7 +19,7 @@ public class ColaGeneral {
 
 
 
-    public void eliminarNodo() {
+    public void eliminarNodo_ge() {
         if (cabeza != null) {
             Nodo eliminarNodo = cabeza; 
             cabeza = cabeza.seguirNodo; 
@@ -33,7 +33,7 @@ public class ColaGeneral {
 
 
 
-    public Cliente obtenerNodo() {
+    public Cliente obtenerNodo_ge() {
         if (cabeza == null) {
             return null; 
             
