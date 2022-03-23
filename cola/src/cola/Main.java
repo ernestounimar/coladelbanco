@@ -18,8 +18,9 @@ public class Main {
         int salir = 0;
         Boolean disBoolean;
         Scanner Let = new Scanner(System.in);
-
+        int x=0;
         while (salir != 1) {
+            x++;
             disBoolean = false;
             System.out.println(" Bienvenido al programa  ");
             System.out.println(" Dijite los clientes para salir presione 0   ");
@@ -42,7 +43,7 @@ public class Main {
             } else {
                 disBoolean = false;
             }
-            Cliente Usuario = new Cliente(nomString,edadInteger,disBoolean);
+            Cliente Usuario = new Cliente(nomString,edadInteger,disBoolean,x);
 
             System.out.println(" El nombre es:  " + Usuario.Nombre);
             System.out.println(" La edad  es:  " + Usuario.Edad);
@@ -59,8 +60,8 @@ public class Main {
             System.out.println(" Si desea salir presione 1 si no presione cualquier otro numero ");
             salir = Let.nextInt();
         }
-        Cliente x=new Cliente("nombre",1,true,3);
-        x.operaciones.sumartiempo(1);
+        
+        
 
     }
 }

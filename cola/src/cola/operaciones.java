@@ -4,6 +4,10 @@
  */
 package cola;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author alcam
@@ -32,5 +36,18 @@ public class operaciones {
 
 }
     }
-     
-     }
+    void operacionesimprimir(String pnombre,ColaGeneral cola, String nombrec ) throws IOException{ //convertir esto en un string que de las operaciones realizadas.
+    FileReader fr=new FileReader(pnombre);
+        BufferedReader br=new BufferedReader(fr);
+        String linea=br.readLine();
+       
+        while ((linea=br.readLine())!=null)
+        {
+            String datos;
+            datos=("/r");
+            String nombre = datos;
+            Cliente cliente=new Cliente(nombrec);
+            cola.encolarNodo_ge(cliente);
+    }
+}
+}

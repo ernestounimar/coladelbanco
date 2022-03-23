@@ -12,11 +12,8 @@ public class Cliente {
     Boolean Discapacidad;
     Integer Posicion;
     operaciones operaciones;
-    public Cliente(String nombre, Integer edad, Boolean discapacidad,int posi) {
+    public Cliente(String nombre) {
         Nombre = nombre;
-        Edad = edad;
-        Discapacidad = discapacidad;
-        Posicion=posi;
         
     }
 
