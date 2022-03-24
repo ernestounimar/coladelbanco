@@ -31,9 +31,12 @@ public class operaciones {
     }
     public void sumartiempo(){
         if(tiempototal<tiempodisponible){
+        Pila pila=new Pila();
         Scanner sc=new Scanner(System.in);
         System.out.println("Ingrese el numero de la operacion: ");
-        int oper=sc.nextInt();       
+        Integer oper=sc.nextInt();   
+        String x=oper.toString();
+        pila.apilar(x);
         switch(oper){
         case 1: tiempo += consulta;; break;
         case 2: tiempo += retiro; break;

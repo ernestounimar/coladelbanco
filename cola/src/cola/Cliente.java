@@ -9,12 +9,15 @@ si se desea encanzular alguno pueden hacerlo en este apartado  */
 public class Cliente {
     String Nombre;
     Integer Edad;
-    Boolean Discapacidad;
+    Boolean Discapacidad=false;
     Integer Posicion;
     operaciones operaciones;
     public Cliente(String nombre) {
         Nombre = nombre;
         
+    }
+    void asignardiscapacidad(Cliente i, boolean disc){
+        i.Discapacidad=true;
     }
 
     

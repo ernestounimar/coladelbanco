@@ -1,9 +1,10 @@
 package cola; 
 public class ColaGeneral {
-    Cliente [] clientes;
+    
     public Nodo cabeza;
     public Nodo fincola;
     int tamaño=0;
+    boolean paso=false;
     public void encolarNodo_ge(Cliente i) { // esta funcion es para poner un cliente delante de una cola
 
         /* lo inicio localmente y verfico si esta vacio */
@@ -20,8 +21,6 @@ public class ColaGeneral {
         tamaño++;
     }
 
-
-
     public void eliminarNodo_ge() {
         if (cabeza != null) {
             Nodo eliminarNodo = cabeza; 
@@ -33,6 +32,9 @@ public class ColaGeneral {
         }
         
     }
+    public void adelantarnodo(){
+    
+}
 
 
 
@@ -45,4 +47,5 @@ public class ColaGeneral {
         }
         
     }
+    
 }
