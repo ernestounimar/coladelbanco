@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         /* Declaro estos valores para rellenar clientes */
-        String nomString, ubic,disc;
+        /*String nomString, ubic,disc;
         Integer edadInteger;
         int salir = 0;
         int i=0; 
@@ -47,9 +47,12 @@ public class Main {
             ar.crear(ubic, cliente.Nombre);                                               
             System.out.println(" Si desea salir presione 1 si no presione cualquier otro numero ");
             salir = Let.nextInt();
-        }
+        }*/
         
-        
+        operaciones oper=new operaciones();
+        oper.sumartiempo();
+        System.out.println(oper.tiempototal);
+        oper.horaactual();
 
     }
 }

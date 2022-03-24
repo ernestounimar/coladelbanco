@@ -7,6 +7,7 @@ package cola;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
@@ -14,28 +15,74 @@ import java.io.IOException;
  */
 public class operaciones {
     
-    Integer tiempo;
-    Integer consulta=(1);
-    Integer retiro=(4);
-    Integer deposito=(3);
-    Integer actualizacion=(5);
-    Integer pago=(2);
+    Integer tiempo=0;
+    Integer tiempototal=0;
+    Integer consulta=(27000);
+    Integer retiro=(240);
+    Integer deposito=(180);
+    Integer actualizacion=(300);
+    Integer pago=(120);
     Integer operacionesarealizar;
-    
+    Integer tiempodisponible=27000;
+    Integer limiteoper=0;
     public operaciones(){
         
       
     }
-    public void sumartiempo(int oper){
-         switch(oper){
-        case 1: tiempo += consulta; break;
+    public void sumartiempo(){
+        if(tiempototal<tiempodisponible){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Ingrese el numero de la operacion: ");
+        int oper=sc.nextInt();       
+        switch(oper){
+        case 1: tiempo += consulta;; break;
         case 2: tiempo += retiro; break;
         case 3: tiempo += deposito; break;
         case 4: tiempo += actualizacion; break;
         case 5: tiempo += pago; break;
 
 }
+        System.out.println("Coloque 1 si quiere hacer otra operacion: ");
+        int seguir=sc.nextInt();
+        if(seguir==1){
+           limiteoper++;
+           if(limiteoper<=4){
+            sumartiempo();
+           }else{
+               tiempototal+=tiempo;
+               tiempo=0;
+               limiteoper=0;
+           }
+        }else{
+            tiempototal+=tiempo;
+            tiempo=0;
+            limiteoper=0;
+        }
+        
+        }else{
+            System.out.println("Ha concluido la jornada laboral");
+            tiempo=0;
+            tiempototal=0;
+            limiteoper=0;
+        } 
     }
+    void horaactual(){
+        int hora=8;
+        int minuto=30;
+        int segundo=0;
+        segundo+=tiempototal;
+        while(segundo>60){
+            segundo-=60;
+            minuto+=1;
+        }
+        while(minuto>60){
+            minuto-=60;
+            hora+=1;
+        }
+        
+       System.out.println(hora+":"+minuto+":"+segundo);
+    }
+    
     void operacionesimprimir(String pnombre,ColaGeneral cola, String nombrec ) throws IOException{ //convertir esto en un string que de las operaciones realizadas.
     FileReader fr=new FileReader(pnombre);
         BufferedReader br=new BufferedReader(fr);
