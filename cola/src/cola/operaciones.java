@@ -14,44 +14,42 @@ import java.util.Scanner;
  * @author alcam
  */
 public class operaciones {
-    
+    String  TiempoAgotado=("tiempo agotado"); 
     Integer tiempo=0;
     Integer tiempototal=0;
-    Integer consulta=(27000);
+    Integer consulta=(90);
     Integer retiro=(240);
     Integer deposito=(180);
     Integer actualizacion=(300);
     Integer pago=(120);
     Integer operacionesarealizar;
-    Integer tiempodisponible=27000;
+    Integer tiempodisponible=(27000);
     Integer limiteoper=0;
     public operaciones(){
         
       
     }
     public void sumartiempo(){
-        if(tiempototal<tiempodisponible){
-        Pila pila=new Pila();
+        if(tiempototal<=tiempodisponible){
         Scanner sc=new Scanner(System.in);
         System.out.println("Ingrese el numero de la operacion: ");
-        Integer oper=sc.nextInt();   
+        Integer oper=sc.nextInt();
         String x=oper.toString();
-        pila.apilar(x);
         switch(oper){
         case 1: tiempo += consulta;; break;
         case 2: tiempo += retiro; break;
         case 3: tiempo += deposito; break;
         case 4: tiempo += actualizacion; break;
         case 5: tiempo += pago; break;
-
 }
         System.out.println("Coloque 1 si quiere hacer otra operacion: ");
         int seguir=sc.nextInt();
         if(seguir==1){
            limiteoper++;
-           if(limiteoper<=4){
+           if(limiteoper<=4){                                    
             sumartiempo();
            }else{
+               System.out.println("se han acabado las operaciones de este cliente");
                tiempototal+=tiempo;
                tiempo=0;
                limiteoper=0;
@@ -63,22 +61,26 @@ public class operaciones {
         }
         
         }else{
-            System.out.println("Ha concluido la jornada laboral");
+           
             tiempo=0;
             tiempototal=0;
             limiteoper=0;
+           }
         } 
-    }
+        
+        
+       
+    
     void horaactual(){
         int hora=8;
         int minuto=30;
         int segundo=0;
         segundo+=tiempototal;
-        while(segundo>60){
+        while(segundo>=60){
             segundo-=60;
             minuto+=1;
         }
-        while(minuto>60){
+        while(minuto>=60){
             minuto-=60;
             hora+=1;
         }
