@@ -16,6 +16,7 @@ public class Main {
         String nomString, ubic,disc;
         Integer edadInteger;
         int salir = 0;
+        int i=0; 
         Boolean disBoolean;
         Scanner Let = new Scanner(System.in);
         archivo ar=new archivo();
@@ -23,9 +24,11 @@ public class Main {
         while (salir != 1) {
             
             disBoolean = false;
-            System.out.println(" Bienvenido al programa  ");
+            
             System.out.println("nombre: ");
             nomString=Let.nextLine();
+           if(i>0){
+            nomString=Let.nextLine();}
             System.out.println("donde quiere el archivo");
             ubic=Let.nextLine();
             System.out.println(" Si el cliente es discapacitado escriba si, si no es el caso escriba cualquier otra cosa: ");
@@ -40,7 +43,7 @@ public class Main {
             }
             Cliente cliente=new Cliente(nomString);
             cliente.Discapacidad=disBoolean;
-            
+            i++;
             ar.crear(ubic, cliente.Nombre);                                               
             System.out.println(" Si desea salir presione 1 si no presione cualquier otro numero ");
             salir = Let.nextInt();
