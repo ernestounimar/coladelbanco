@@ -18,6 +18,8 @@ public class archivo
 {
     PrintWriter pf;
     FileReader fr;
+    int tamaño=0;
+   
     
     void crear(String pNombre,String pDatos) throws IOException
     {
@@ -36,22 +38,23 @@ void leer(String pnombre,ColaGeneral cola ) throws IOException{
         {
             String datos;
             datos=("/r");
-            
             String nombre = datos;
+            
+           
             Cliente cliente=new Cliente(nombre);
             cola.encolarNodo_ge(cliente);
     }
 }
-int obtenertamaño(String pnombre)throws IOException{
-    int x=0;
+void obtenertamaño(String pnombre)throws IOException{
+    
     FileReader fr=new FileReader(pnombre);
         BufferedReader br=new BufferedReader(fr);
         String linea=br.readLine();
        
         while ((linea=br.readLine())!=null)
         {
-            x++;
+            tamaño++;
 }
-        return x;
+        
 }
 }

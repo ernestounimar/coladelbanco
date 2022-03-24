@@ -10,53 +10,38 @@ public class Main {
      * los metodos con los que manipulo las colas
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         /* Declaro estos valores para rellenar clientes */
-        String nomString;
-        Integer edadInteger,opcionf;
+        String nomString, ubic,disc;
+        Integer edadInteger;
         int salir = 0;
         Boolean disBoolean;
         Scanner Let = new Scanner(System.in);
-        int x=0;
+        archivo ar=new archivo();
+        ColaGeneral cola=new ColaGeneral();
         while (salir != 1) {
-            x++;
+            
             disBoolean = false;
             System.out.println(" Bienvenido al programa  ");
-            System.out.println(" Dijite los clientes para salir presione 0   ");
+            System.out.println("nombre: ");
+            nomString=Let.nextLine();
+            System.out.println("donde quiere el archivo");
+            ubic=Let.nextLine();
+            System.out.println(" Si el cliente es discapacitado escriba si, si no es el caso escriba cualquier otra cosa: ");
+            disc=Let.nextLine();
+            System.out.println(" Escogio " + disc);
 
-            System.out.println(" Dijite nombre del cliente ");
-            nomString = Let.nextLine();
-            System.out.println(" El nombre que escogiste es: " + nomString);
-
-            System.out.println(" Dijite Edad del cliente ");
-            edadInteger = Let.nextInt(); 
-            System.out.println(" La Edad que escogiste es: " + edadInteger);
-
-            System.out.println(" Si el clientes es discapacitado presione 5 ");
-            opcionf = Let.nextInt(); 
-            System.out.println(" Escogio " + opcionf);
-
-            if (opcionf == 5 ){
+            if (disc.equals("si") ){
                 disBoolean = true; 
                 
             } else {
                 disBoolean = false;
             }
-            Cliente Usuario = new Cliente(nomString,edadInteger,disBoolean,x);
-
-            System.out.println(" El nombre es:  " + Usuario.Nombre);
-            System.out.println(" La edad  es:  " + Usuario.Edad);
-            System.out.println(" discapacitado?:  " + Usuario.Discapacidad);
-
-            System.out.println(" La edad  es:  " + Usuario.Edad);
-            ColaComun LaFila = new ColaComun();
-
-            LaFila.encolarNodo_comun(Usuario);
-            System.out.println(LaFila.obtenerNodo_comun());
-
-
-
+            Cliente cliente=new Cliente(nomString);
+            cliente.Discapacidad=disBoolean;
+            
+            ar.crear(ubic, cliente.Nombre);                                               
             System.out.println(" Si desea salir presione 1 si no presione cualquier otro numero ");
             salir = Let.nextInt();
         }
