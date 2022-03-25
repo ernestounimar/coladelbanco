@@ -2,7 +2,8 @@ package cola;
 
 import java.io.*;
 import java.util.Scanner;
-
+import java.io.File;
+import java.io.IOException;
 public class Main {
 
     /*
@@ -11,63 +12,87 @@ public class Main {
      */
 
     public static void main(String[] args) throws IOException {
-
-        /* Declaro estos valores para rellenar clientes */
-        /*String nomString, ubic,disc;
-        Integer edadInteger;
-        int salir = 0;
-        int i=0; 
-        int opcion=0;
-        System.out.println("Bienvenido al sistema banesco, escoja una opcion por favor /n"
-                    + "1.cargar cliente /n"
-                    + "2.Atender cliente /n"
-                    + "3.verificar hora /n"
-                    + "4.salir del sistema /n");
-        switch (opcion){
-            case 1:Boolean disBoolean;
-        Scanner Let = new Scanner(System.in);
-        archivo ar=new archivo();
-        ColaGeneral cola=new ColaGeneral();
-        while (salir != 1) {
-            
-            disBoolean = false;                        
-            System.out.println("nombre: ");
-            nomString=Let.nextLine();
-           if(i>0){
-            nomString=Let.nextLine();}
-            System.out.println("donde quiere el archivo");
-            ubic=Let.nextLine();
-            System.out.println(" Si el cliente es discapacitado escriba si, si no es el caso escriba cualquier otra cosa: ");
-            disc=Let.nextLine();
-            System.out.println(" Escogio " + disc);
-
-            if (disc.equals("si") ){
-                disBoolean = true; 
-                
-            } else {
-                disBoolean = false;
-            }
-            Cliente cliente=new Cliente(nomString);
-            cliente.Discapacidad=disBoolean;
-            i++;
-            ar.crear(ubic, cliente.Nombre);                                               
-            System.out.println(" Si desea salir presione 1 si no presione cualquier otro numero ");
-            salir = Let.nextInt();
+         ColaGeneral cola= new ColaGeneral();
+         
+        Scanner sc= new Scanner(System.in);
+        archivo n1= new archivo();
+        archivo n2=new archivo();
+        System.out.println("existe un clientes_pendientes.in?");
+        String w=sc.nextLine();
+        
+        if(w.equals("si")){
+            System.out.println("Ubicacion: ");
+            w=sc.nextLine();
+            File file=new File(w);
+            n1.leer(w, cola);
+                file.delete();
         }
-            case 2:
-             operaciones oper1= new operaciones();
-             oper1.sumartiempo();
-            case 3:*/
-                //operaciones oper2= new operaciones();
-                //oper2.sumartiempo();
-                //oper2.horaactual();
-                //Scanner Let = new Scanner(System.in);
+                operaciones oper=new operaciones();               
                 archivo ar=new archivo();
-                ColaGeneral cola= new ColaGeneral();
-                ar.crear("arhivopruebamain.txt","hola");
+                
+                ColaComun colac=new ColaComun();
+                ColaDiscapacitados colad= new ColaDiscapacitados();
+                Pila pila=new Pila();
                 archivo al=new archivo();
-                al.leer("arhivopruebamain.txt", cola);
-                System.out.println(al.tamaño);
+                System.out.println("Direccion del archivo con los participantes: ");
+                String x=sc.nextLine();
+               
+                al.leer(x, cola);
+                for(int i=0;i<al.tamaño;i++){
+                    System.out.println("El cliente"+cola.cabeza.cliente.Nombre+" es discapacitado? escriba 1 si lo es:");
+                    int y=sc.nextInt();
+                    if(y==1){
+                        cola.cabeza.cliente.Discapacidad=true;
+                        colad.encolarNodo_dis(cola.cabeza.cliente);
+                        cola.eliminar_ge();
+                    }else{
+                        cola.cabeza.cliente.Discapacidad=false;
+                        colac.encolarNodo_comun(cola.cabeza.cliente);
+                        cola.eliminar_ge();
+                    }
+                }
+                while(colad.cabeza.cliente.Nombre!=null  || colac.cabeza.cliente.Nombre!=null) {
+                    
+     for(int t=0;t<4;t++){
+        if(colac.cabeza.cliente.Nombre!=null){
+            cola.encolarNodo_ge(colac.cabeza.cliente);       
+         colac.eliminarNodo_comun();
+        }       
+     }
+     if(colad.cabeza.cliente.Nombre!=null){
+         cola.encolarNodo_ge(colad.cabeza.cliente);
+         colad.eliminarNodo_dis();
+     }
+                    
+                    
+    }
+for(int y=0;y<al.tamaño;y++){          
+    System.out.println("Bienvenido "+cola.cabeza.cliente.Nombre+" indique que operacion va a realizar: ");
+    System.out.println("1 para consulta");
+    System.out.println("2 para retiro");
+    System.out.println("3 para deposito");
+    System.out.println("4 para actualizacion");
+    System.out.println("5 para pago: ");
+    oper.sumartiempo();  
+    cola.eliminarNodo_ge(pila);
+    if(oper.tiempototal==27000){
+        y=al.tamaño;
+       while(cola.cabeza.cliente.Nombre!=null){ 
+        n2.crear(w, cola.cabeza.cliente.Nombre);
+        cola.eliminar_ge();
+       }
+    }
+    
+}
+for(int k=0;k<pila.tamanio;k++){
+    ar.crear("clientesatendidos.txt", pila.inicio.cliente.Nombre);
+    pila.retirar();
+}
+                
+                
+              
+                
+                
         }
         
         

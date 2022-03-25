@@ -24,12 +24,11 @@ public class ColaGeneral {
         tamaño++;
     }
 
-    public void eliminarNodo_ge(String ubicacion) throws IOException {
+    public void eliminarNodo_ge(Pila pila) throws IOException {
         
         if (cabeza != null) {
-            Nodo eliminarNodo = cabeza;
-            archivo ar=new archivo();
-            ar.crear(ubicacion, cabeza.cliente.Nombre);
+            Nodo eliminarNodo = cabeza;         
+            pila.apilar(cabeza.cliente);
             cabeza = cabeza.seguirNodo; 
             eliminarNodo.seguirNodo = null; 
             if (cabeza == null) {
@@ -44,6 +43,19 @@ public class ColaGeneral {
             
         } else {
             return cabeza.cliente; 
+        }
+        
+    }
+    public void eliminar_ge() throws IOException {
+        
+        if (cabeza != null) {
+            Nodo eliminarNodo = cabeza;
+            
+            cabeza = cabeza.seguirNodo; 
+            eliminarNodo.seguirNodo = null; 
+            if (cabeza == null) {
+                fincola = null; 
+            }
         }
         
     }

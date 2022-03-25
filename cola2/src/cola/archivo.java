@@ -37,7 +37,7 @@ void leer(String pnombre,ColaGeneral cola ) throws IOException{
         while ((linea=br.readLine())!=null)
         {
             String datos;
-            datos=("/r");
+            datos=linea;
             String nombre = datos;
             tamaño++;
            

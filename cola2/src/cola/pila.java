@@ -10,8 +10,8 @@ package cola;
  */
  class Pila {
     
-    private Nodop inicio;
-    private int tamanio;
+    public Nodo inicio;
+    public int tamanio;
   
     public void Pila(){
         inicio = null;
@@ -21,21 +21,21 @@ package cola;
     public boolean esVacia(){
         return inicio == null;
     }
-    public void apilar(String valor){      
-        Nodop nuevo = new Nodop();      
-        nuevo.setValor(valor);        
+    public void apilar(Cliente c){      
+        Nodo nuevo = new Nodo(c);      
+               
         if (esVacia()) {            
             inicio = nuevo;
         }       
         else{
-            nuevo.setSiguiente(inicio);
+            nuevo.seguirNodo=inicio;
             inicio = nuevo;
         }
        
         tamanio++;
     }
-    public boolean buscar(String referencia){       
-        Nodop aux = inicio;       
+   /* public boolean buscar(String referencia){       
+        Nodo aux = inicio;       
         boolean existe = false;     
         while(existe != true && aux != null){
             
@@ -49,18 +49,13 @@ package cola;
        
         return existe;
     }
-    public void retirar(){
-        if (!esVacia()) {          
-            inicio = inicio.getSiguiente();
-            tamanio--;
-        }
-    }
+    
     public void remover(String referencia){
         
         if (buscar(referencia)) {
-            Nodop pilaAux = null;           
+            Nodo pilaAux = null;           
             while(referencia != inicio.getValor()){
-                Nodop temp = new Nodop();                
+                Nodo temp = new Nodo();                
                 temp.setValor(inicio.getValor());               
                 if(pilaAux == null){
                     pilaAux = temp;
@@ -79,9 +74,9 @@ package cola;
             }
             pilaAux = null;
         }
-    }    
+    } *  
     public void listar(){
-        Nodop aux = inicio;
+        Nodo aux = inicio;
         while(aux != null){
             System.out.println("|\t" + aux.getValor() + "\t|");
             System.out.println("-----------------");
@@ -90,7 +85,7 @@ package cola;
         
     }
     public void InvertirPila(){
-      Nodop Temporal = inicio;
+      Nodo Temporal = inicio;
       Pila cc = new Pila();
       while (!esVacia()) {
           cc.apilar(inicio.valor);
@@ -98,5 +93,11 @@ package cola;
       }
       inicio = Temporal;
       
+    }*/
+    public void retirar(){
+        if (!esVacia()) {          
+            inicio = inicio.seguirNodo;
+            tamanio--;
+        }
     }
 }
