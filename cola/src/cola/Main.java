@@ -13,18 +13,24 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         /* Declaro estos valores para rellenar clientes */
-        /*String nomString, ubic,disc;
+        String nomString, ubic,disc;
         Integer edadInteger;
         int salir = 0;
         int i=0; 
-        Boolean disBoolean;
+        int opcion=0;
+        System.out.println("Bienvenido al sistema banesco, escoja una opcion por favor /n"
+                    + "1.cargar cliente /n"
+                    + "2.Atender cliente /n"
+                    + "3.verificar hora /n"
+                    + "4.salir del sistema /n");
+        switch (opcion){
+            case 1:Boolean disBoolean;
         Scanner Let = new Scanner(System.in);
         archivo ar=new archivo();
         ColaGeneral cola=new ColaGeneral();
         while (salir != 1) {
             
-            disBoolean = false;
-            
+            disBoolean = false;                        
             System.out.println("nombre: ");
             nomString=Let.nextLine();
            if(i>0){
@@ -47,12 +53,16 @@ public class Main {
             ar.crear(ubic, cliente.Nombre);                                               
             System.out.println(" Si desea salir presione 1 si no presione cualquier otro numero ");
             salir = Let.nextInt();
-        }*/
+        }
+            case 2:
+             operaciones oper1= new operaciones();
+             oper1.sumartiempo();
+            case 3:
+                operaciones oper2= new operaciones();
+                oper2.horaactual();
+        }
         
-        operaciones oper=new operaciones();
-        oper.sumartiempo();
-        System.out.println(oper.tiempototal);
-        oper.horaactual();
+        
 
     }
 }
